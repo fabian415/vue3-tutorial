@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Vue3</h1>
+    <div>
+        <button id="sub">-1</button>
+        <input id="num" type="text" value="0">
+        <button id="add">+1</button>
+    </div>
+    <div>
+        目前的數字是 <span id="display" style="font-weight: bold;">{{ num }}</span>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sub = document.getElementById("sub");
+            const add = document.getElementById("add");
+            const num = document.getElementById("num");
+            const display = document.getElementById("display");
+            display.innerHTML = num.value;
+            sub.addEventListener("click", () => {
+                num.value = parseInt(num.value) - 1;
+                display.innerHTML = num.value;
+            });
+            add.addEventListener("click", () => {
+                num.value = parseInt(num.value) + 1;
+                display.innerHTML = num.value;
+            });
+        });
+    </script>
+</body>
+</html>
