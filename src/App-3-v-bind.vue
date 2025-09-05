@@ -4,12 +4,17 @@
 
     <!-- class 綁定，為元素動態綁定一個或多個屬性，可以縮寫為 : -->
     <div :class="[classA, classB]">
-        Hello World!!!
+        {{ text }}
     </div>
 
     <!-- class 綁定，為元素動態綁定一個或多個屬性，可以縮寫為 : -->
     <div :class="['red', isItalic ? 'italic' : '']">
-        Hello World 222!!!
+        {{ text }}
+    </div>
+
+    <div>
+        <!-- 綁定value屬性 -->
+        <input type="text" :value="text">
     </div>
 </template>
 
@@ -21,6 +26,7 @@
     const classB = ref('bold')
     const isItalic = ref(true)
     // isItalic.value = false
+    const text = ref('Hello World')
 </script>
 
 <style scoped>
