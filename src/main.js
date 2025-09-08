@@ -26,9 +26,15 @@ import { createApp } from "vue";
 // import App from "./App-3-watch-deep.vue";
 
 // import App from "./App-4-components.vue";
-// import App from "./App-4-components-2.vue";
-// import App from "./App-4-components-3.vue";
-// import App from "./App-4-components-4.vue";
-import App from "./App-4-components-5.vue";
+// import App from "./App-4-components-2-prop-in-event-out.vue";
+// import App from "./App-4-components-3-prop-v-model.vue";
+// import App from "./App-4-components-4-prop-computed.vue";
+// import App from "./App-4-components-5-provide-inject.vue";
+
+// import App from "./App-4-components-slot.vue";
+// import App from "./App-4-components-slot-2.vue";
+// import App from "./App-4-components-slot-3.vue";
+
+import App from "./App-5-life-cycle.vue";
 
 createApp(App).mount("#app");

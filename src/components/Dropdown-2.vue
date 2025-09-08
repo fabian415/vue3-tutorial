@@ -33,10 +33,10 @@ const props = defineProps({
 // 定義發出的事件
 const emit = defineEmits();
 
-// 創建一個響應式的變數來保存選擇的值 [copy defaultSelected]
+// 因為不能更改 props,所以需要創建一個新的變數來保存選擇的值 [copy defaultSelected]
 const selectedOption = ref(props.defaultSelected);
 
-// // 處理選項改變時的事件，發送選中的值
+// 處理選項改變時的事件，發送選中的值
 const handleChange = () => {
   emit('update:selected', selectedOption.value); // 發出選中的值
 };

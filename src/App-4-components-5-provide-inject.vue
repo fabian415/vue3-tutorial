@@ -1,5 +1,7 @@
 <template>
   <Children />
+  <hr>
+  <button @click="handleAfterBirthday">爺爺自己長大</button>
 </template>
 
 <script setup>
@@ -13,6 +15,7 @@ const states = reactive({
 const handleAfterBirthday = () => {
     states.old = states.old + 1
 };
+// 透過 provide 進行資料傳遞
 provide("grandpaStates", readonly(states));
 provide("grandpaDispatch", { handleAfterBirthday });
 </script>

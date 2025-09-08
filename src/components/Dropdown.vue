@@ -26,7 +26,7 @@
 import { ref } from 'vue';
 
 // 定義傳入的 props
-// 要讓父元件使用 v-model，基於 modelValue prop 屬性和 update:modelValue 事件來進行雙向綁定
+// 父元件使用 v-model 時，傳入是 prop 屬性為 modelValue 名稱和傳出 update:modelValue 的事件名稱來進行雙向綁定
 const props = defineProps({
   modelValue: {
     type: String,
@@ -41,7 +41,7 @@ const props = defineProps({
 // 定義發出的事件
 const emit = defineEmits();
 
-// 創建一個響應式的變數來保存選擇的值，[copy modelValue]
+// 因為不能更改 props, 所以需要創建一個新的變數來保存選擇的值 [copy modelValue]
 const selectedOption = ref(props.modelValue);
 // 控制下拉選單的開關
 const isOpen = ref(false);

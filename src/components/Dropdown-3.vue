@@ -33,6 +33,10 @@ const props = defineProps({
 // 定義發出的事件
 const emit = defineEmits();
 
+// 父元件與子元件都是用 v-model 做雙向綁定時，
+// 因為不能更改 prop 值，所以使用 computed writable 方式，
+// 在 get 中拷貝 props.modelValue 至新變數 ，
+// 並在 set 中發出事件 update:modelValue 來更改父元件的值
 const selectedOption = computed({
   get() {
     return props.modelValue
