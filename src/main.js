@@ -35,6 +35,16 @@ import { createApp } from "vue";
 // import App from "./App-4-components-slot-2.vue";
 // import App from "./App-4-components-slot-3.vue";
 
-import App from "./App-5-life-cycle.vue";
+// import App from "./App-5-life-cycle.vue";
 
-createApp(App).mount("#app");
+// import App from "./App-6-vuex.vue";
+
+import App from "./App-7-vue-router.vue";
+
+import store from "./store";
+import { router } from "./router";
+
+createApp(App)
+    .use(store)
+    .use(router)
+    .mount("#app");
