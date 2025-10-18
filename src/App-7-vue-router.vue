@@ -1,14 +1,18 @@
 <template>
-    <h1>Hello Vue Router App !!</h1>
     <p>   
         <!-- router-link 經編譯之後會變成 <a> 標籤 -->
         <!-- 使用 to 屬性來處理目標 URL -->
-        <router-link to="/">Go to Home</router-link> | 
-        <router-link to="/about">About</router-link>
+        <router-link to="/">Login</router-link> | 
+        <router-link to="/home">Home</router-link> |
+        <span v-for="i in 5" :key="i">
+          <router-link :to="`/user/${i}`">
+              User {{ i }}
+          </router-link> | 
+        </span>
     </p>
-    
-    <!-- 渲染 route 的位置 -->
+
     <section>
+        <!-- 渲染 route 的位置 -->
         <router-view></router-view>
     </section>
 </template>
