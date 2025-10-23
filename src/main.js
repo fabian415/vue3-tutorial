@@ -13,7 +13,7 @@ import { createApp } from "vue";
 // import App from './App-3-v-show.vue'
 // import App from './App-3-v-bind.vue'
 // import App from './App-3-v-on.vue'
-// import App from "./App-3-v-for.vue";
+import App from "./App-3-v-for.vue";
 // import App from './App-3-v-model.vue'
 // import App from './App-3-v-model-2.vue'
 // import App from './App-3-v-once.vue'
@@ -39,7 +39,7 @@ import { createApp } from "vue";
 
 // import App from "./App-6-vuex.vue";
 
-import App from "./App-7-vue-router.vue";
+// import App from "./App-7-vue-router.vue";
 
 import store from "./store";
 import { router } from "./router";
