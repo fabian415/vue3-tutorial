@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐹 打地鼠遊戲 🎯</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: "Comic Sans MS", "Nunito", sans-serif;
+      margin-top: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 15px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .hole {
+      width: 100px;
+      height: 100px;
+      background-color: #f7e6e6;
+      border: 3px solid #ffb6c1;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .hole.active {
+      background-color: #ffe4f0;
+      box-shadow: 0 0 10px #ffb3c6;
+    }
+
+    .mole {
+      font-size: 40px;
+      position: absolute;
+      top: 20%;
+      left: 25%;
+      animation: pop 0.3s ease-in;
+    }
+
+    @keyframes pop {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    button {
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff77aa;
+    }
+
+    .game-over {
+      color: #ff3366;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .button-area {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐹 打地鼠遊戲 🎯</h1>
+  <p>分數：<span id="score">0</span></p>
+  <p id="time">剩餘時間：10 秒</p>
+  <p id="game-over" class="game-over" style="display:none;">⏰ 遊戲結束！</p>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="button-area">
+    <button id="start-btn">開始遊戲</button>
+    <button id="stop-btn" style="display:none;">停止遊戲</button>
+    <button id="restart-btn" style="display:none;">重新開始</button>
+  </div>
+
+  <script>
+    const scoreEl = document.getElementById('score');
+    const timeEl = document.getElementById('time');
+    const gameOverEl = document.getElementById('game-over');
+    const gridEl = document.getElementById('grid');
+    const startBtn = document.getElementById('start-btn');
+    const stopBtn = document.getElementById('stop-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    let score = 0;
+    let moleIndex = null;
+    let isPlaying = false;
+    let timeLeft = 60;
+    let moleTimer = null;
+    let countdownTimer = null;
+
+    // 建立九個地洞
+    for (let i = 0; i < 9; i++) {
+      const hole = document.createElement('div');
+      hole.classList.add('hole');
+      hole.dataset.index = i;
+      hole.addEventListener('click', () => hitMole(i));
+      gridEl.appendChild(hole);
+    }
+
+    function showMole() {
+      // 先清除之前的地鼠
+      if (moleIndex !== null) {
+        gridEl.children[moleIndex].classList.remove('active');
+        const oldMole = gridEl.children[moleIndex].querySelector('.mole');
+        if (oldMole) oldMole.remove();
+      }
+      // 隨機出現新的地鼠
+      moleIndex = Math.floor(Math.random() * 9);
+      const hole = gridEl.children[moleIndex];
+      hole.classList.add('active');
+      const mole = document.createElement('div');
+      mole.classList.add('mole');
+      mole.textContent = '🐹';
+      hole.appendChild(mole);
+    }
+
+    function hitMole(index) {
+      if (!isPlaying) return;
+      if (index === moleIndex) {
+        score++;
+        scoreEl.textContent = score;
+        // 打中後清除地鼠
+        gridEl.children[moleIndex].classList.remove('active');
+        gridEl.children[moleIndex].querySelector('.mole').remove();
+        moleIndex = null;
+      }
+    }
+
+    function startGame() {
+      score = 0;
+      scoreEl.textContent = score;
+      timeLeft = 10;
+      timeEl.textContent = `剩餘時間：${timeLeft} 秒`;
+      isPlaying = true;
+
+      startBtn.style.display = 'none';
+      stopBtn.style.display = 'inline-block';
+      restartBtn.style.display = 'none';
+      gameOverEl.style.display = 'none';
+
+      moleTimer = setInterval(showMole, 800);
+
+      countdownTimer = setInterval(() => {
+        timeLeft--;
+        timeEl.textContent = `剩餘時間：${timeLeft} 秒`;
+        if (timeLeft <= 0) {
+          stopGame();
+        }
+      }, 1000);
+    }
+
+    function stopGame() {
+      isPlaying = false;
+      if (moleIndex !== null) {
+        gridEl.children[moleIndex].classList.remove('active');
+        const mole = gridEl.children[moleIndex].querySelector('.mole');
+        if (mole) mole.remove();
+      }
+      moleIndex = null;
+      clearInterval(moleTimer);
+      clearInterval(countdownTimer);
+
+      stopBtn.style.display = 'none';
+      restartBtn.style.display = 'inline-block';
+      gameOverEl.style.display = 'block';
+    }
+
+    function restartGame() {
+      startGame();
+    }
+
+    startBtn.addEventListener('click', startGame);
+    stopBtn.addEventListener('click', stopGame);
+    restartBtn.addEventListener('click', restartGame);
+  </script>
+</body>
+</html>

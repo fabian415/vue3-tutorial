@@ -17,6 +17,7 @@ const user = ref({
   },
 });
 
+// 監聽一個 ref 變數時，若該 ref 為一個物件，則必須設定 deep: true
 watch(
   user,
   (newValue, oldValue) => {
@@ -27,9 +28,21 @@ watch(
   { deep: true }
 );
 
-// 無法使用！
+// // 無法使用！為什麼？
 // watch(
 //   () => user.name,
+//   (value, oldValue) => {
+//     console.log("姓名已改變: ", value);
+//   }
+// );
+
+
+
+
+
+// console.log(user.name);
+// watch(
+//   () => user.value.name,
 //   (value, oldValue) => {
 //     console.log("姓名已改變: ", value);
 //   }

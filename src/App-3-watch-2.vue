@@ -19,18 +19,20 @@ watch(fruits, (value, oldValue) => {
 });
 
 // // 寫法二：不能 watch reactive 的屬性值
+// // [Vue warn]: Invalid watch source:  10 A watch source can only be a getter/effect function, 
+// // a ref, a reactive object, or an array of these types. 
 // watch(fruits.banana, (value, oldValue) => {
 //   console.log("banana: ", value);
 // });
 
-// 改成getter 函数，則可以 watch reactive 的屬性值
-watch(
-  () => fruits.banana,
-  (value, oldValue) => {
-    console.log("banana: ", value);
-    fruits.apple = value * 3;
-  }
-);
+// // 改成getter 函数，則可以 watch reactive 的屬性值
+// watch(
+//   () => fruits.banana,
+//   (value, oldValue) => {
+//     console.log("banana: ", value);
+//     fruits.apple = value * 3;
+//   }
+// );
 </script>
 
 <style scoped></style>

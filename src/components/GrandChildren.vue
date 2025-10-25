@@ -18,6 +18,9 @@ const states = reactive({
     old: computed(() => grandpaStates.old),
 });
 
+// // 這樣更直觀，透過 computed 進行資料綁定
+// const states = computed(() => grandpaStates);
+
 // 使用 ref or reactive 進行資料拷貝，則無法連動資料
 // const states = ref({
 //     old: grandpaStates.old,

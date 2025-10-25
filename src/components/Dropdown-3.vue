@@ -8,7 +8,7 @@
         :value="option"
         :class="{'selected-option': option === selectedOption}"
       >
-        <span v-if="option === selectedOption" class="checkmark">✔</span> 
+        <!-- <span v-if="option === selectedOption" class="checkmark">✔</span>  -->
         {{ option }}
       </option>
     </select>

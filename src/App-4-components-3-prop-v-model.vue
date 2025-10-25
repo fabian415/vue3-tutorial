@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>選中的項目: {{ selectedOption }}</p>
-    <Dropdown  :options="options" v-model="selectedOption" />
-    <Dropdown2 :options="options" :defaultSelected="selectedOption" @update:selected="updateSelected" />
+    <!-- <Dropdown  :options="options" v-model="selectedOption" /> -->
+    <!-- <Dropdown2 :options="options" :defaultSelected="selectedOption" @update:selected="updateSelected" /> -->
     <Dropdown3 :options="options" v-model="selectedOption" />
   </div>
 </template>
