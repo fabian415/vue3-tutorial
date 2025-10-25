@@ -1,0 +1,251 @@
+/* src/style.css */
+
+/* ---------- 根色票（可愛風） ---------- */
+:root{
+  --bg: #fff8fb;
+  --card: #fff0f5;
+  --pink-1: #ffdde6;
+  --pink-2: #ffb6d2;
+  --accent: #ff66a3;
+  --muted: #8b7286;
+  --shadow: rgba(255, 102, 163, 0.18);
+  --glass: rgba(255,255,255,0.6);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition: 240ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* ---------- 全域重置與排版 ---------- */
+* { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html,body,#app { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, var(--bg), #fff4fb 70%);
+  color: #44283a;
+  font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+  font-size: 16px;
+}
+
+/* If you want an extra playful font, you can include this in index.html:
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+*/
+
+/* ---------- container / layout ---------- */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ---------- Navbar ---------- */
+nav.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(90deg, var(--pink-1), #fff3f8);
+  border-bottom: 2px solid rgba(255,182,210,0.5);
+  box-shadow: 0 6px 18px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.nav-link {
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.nav-link:hover {
+  transform: translateY(-3px);
+  background: var(--glass);
+  box-shadow: 0 6px 12px rgba(255,182,210,0.18);
+}
+
+/* logout button variant */
+.logout-btn {
+  margin-left: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--accent), var(--pink-2));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(255,102,163,0.18);
+  transition: transform var(--transition), opacity var(--transition);
+}
+.logout-btn:hover { transform: translateY(-3px); opacity: 0.95; }
+
+/* ---------- 卡片（共用） ---------- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: 0 10px 24px var(--shadow);
+  border: 1px solid rgba(255,182,210,0.22);
+}
+
+/* cute badge */
+.badge {
+  display: inline-block;
+  background: linear-gradient(90deg,#fff8ff,#ffeef9);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 6px 12px rgba(255,182,210,0.08);
+}
+
+/* ---------- page layouts ---------- */
+.login-page, .profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 12px;
+}
+
+/* login / profile card specific but generic enough */
+.login-card, .profile-card {
+  width: 320px;
+  max-width: 92%;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(255,240,245,0.9), var(--card));
+  box-shadow: 0 14px 30px var(--shadow);
+  border: 1px solid rgba(255,182,210,0.18);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+/* cute header */
+.login-card h2, .profile-card h2 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  color: #5a2b3d;
+}
+
+/* small paragraph */
+.login-card p, .profile-card p {
+  margin: 8px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- 表單元素 ---------- */
+input[type="text"],
+input[type="password"],
+input:not([type]) {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 2px solid rgba(255,182,210,0.6);
+  background: rgba(255,255,255,0.9);
+  outline: none;
+  font-size: 15px;
+  transition: box-shadow var(--transition), transform var(--transition);
+  margin-top: 8px;
+}
+input:focus {
+  box-shadow: 0 8px 20px rgba(255,182,210,0.14);
+  transform: translateY(-2px);
+}
+
+/* button 樣式 */
+button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: .3px;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+button:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+/* primary */
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent), var(--pink-2));
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(255,102,163,0.16);
+  width: 100%;
+}
+.btn-primary:hover { transform: translateY(-4px); }
+
+/* ghost */
+.btn-ghost {
+  background: transparent;
+  border: 1px dashed rgba(255,182,210,0.5);
+  color: var(--accent);
+}
+
+/* error message */
+.error-msg {
+  color: #d94a6a;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* ---------- 裝飾小物（雲朵 / 星星） ---------- */
+.deco-top-right {
+  position: absolute;
+  top: -24px;
+  right: -30px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 40%), linear-gradient(180deg,#fff0f5, #ffdff0);
+  border-radius: 50%;
+  filter: blur(14px);
+  opacity: 0.85;
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+/* ---------- small helpers ---------- */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mt-12 { margin-top: 12px; }
+.mb-8 { margin-bottom: 8px; }
+
+/* ---------- 進階：簡單動畫 ---------- */
+@keyframes popIn {
+  0% { transform: scale(.96); opacity: 0; }
+  60% { transform: scale(1.03); opacity: .9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.fade-in { animation: popIn 360ms var(--transition) both; }
+
+@keyframes floaty {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+.floaty { animation: floaty 3.6s ease-in-out infinite; }
+
+/* ---------- 響應式 ---------- */
+@media (max-width: 480px) {
+  .login-card, .profile-card { padding: 20px; width: 92%; }
+  .nav-link { padding: 6px 8px; font-size: 14px; }
+}
+
+/* ---------- 小提示：搭配你的元件class ---------- */
+/* App.vue already applies .app-container */
+/* Navbar.vue uses .navbar .nav-link .logout-btn */
+/* Login.vue uses .login-page .login-card .error-msg */
+/* Profile.vue uses .profile-page .profile-card  */
+
+/* ---------- END ---------- */

@@ -1,0 +1,52 @@
+/* Global styles from styles.css */
+body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#fafafa; color:#333; }
+.container { max-width:1000px; margin:auto; padding:20px; }
+h2 { font-size:1.5em; margin-bottom:20px; }
+
+/* NavBar.vue */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#f8f8f8; border-bottom:1px solid #ddd; }
+.navbar a { text-decoration:none; color:#333; margin-right:15px; }
+.navbar a:hover { color:#d44; }
+.logo { font-weight:bold; font-size:1.2em; }
+
+/* ProductCard.vue */
+.card { background:white; border:1px solid #ddd; border-radius:6px; padding:10px; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+.card img { width:100%; border-radius:4px; }
+.card .bottom { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
+.card .price { font-weight:bold; }
+.card button { background:#d44; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; }
+.card button:hover { background:#b33; }
+
+/* Products.vue */
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:20px; }
+.loading { text-align:center; color:#777; margin-top:40px; }
+
+/* ProductDetail.vue */
+.detail { display:flex; gap:20px; align-items:flex-start; }
+.detail img { width:300px; border-radius:8px; }
+.detail .info { flex:1; }
+.detail .price { font-size:1.2em; font-weight:bold; margin:10px 0; }
+.detail button { background:#d44; color:white; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; }
+.detail button:hover { background:#b33; }
+
+/* Cart.vue */
+.cart-item { display:flex; align-items:center; border-bottom:1px solid #ddd; padding:10px 0; }
+.cart-item img { width:80px; height:60px; object-fit:cover; border-radius:4px; margin-right:10px; }
+.cart-item .info { flex:1; }
+.cart-item .qty { display:flex; align-items:center; gap:5px; }
+.cart-item .qty input { width:50px; text-align:center; }
+.cart-item .total { width:120px; text-align:right; }
+.remove { color:#d44; background:none; border:none; cursor:pointer; }
+.summary { margin-top:20px; display:flex; justify-content:space-between; }
+.actions { margin-top:10px; display:flex; justify-content:end; gap:10px; }
+.actions a { background:#d44; color:white; padding:6px 12px; border-radius:4px; text-decoration:none; }
+.actions a:hover { background:#b33; }
+.empty { text-align:center; margin-top:40px; color:#777; }
+
+/* Checkout.vue */
+.checkout { background:white; border:1px solid #ddd; border-radius:8px; padding:20px; max-width:500px; }
+.checkout .row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #eee; }
+.checkout .total { display:flex; justify-content:space-between; margin-top:15px; font-size:1.2em; }
+.checkout .actions { margin-top:20px; display:flex; justify-content:end; gap:10px; }
+.checkout .actions button, .checkout .actions a { background:#d44; color:white; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; text-decoration:none; }
+.checkout .actions button:hover, .checkout .actions a:hover { background:#b33; }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Manager Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="navbar">
+            <h1 class="logo">🗂️ Todo Manager Pro</h1>
+            <nav class="nav-links">
+                <a href="#" id="nav-tasks" class="nav-link active">任務列表</a>
+                <a href="#" id="nav-add" class="nav-link">新增任務</a>
+            </nav>
+        </header>
+
+        <main class="main-container">
+            <div id="task-list-view">
+                <div class="task-list">
+                    <h2>📋 我的任務清單</h2>
+                    <div class="control-bar">
+                        <input id="search-input" placeholder="🔍 搜尋任務..." class="search-input" />
+                        <div class="actions">
+                            <button id="toggle-all-btn" class="btn">✅ 全部標記完成</button>
+                            <button id="clear-all-btn" class="btn danger">🗑️ 全部刪除</button>
+                        </div>
+                    </div>
+                    <p class="summary">
+                        ✅ 已完成任務：<strong id="completed-count">0</strong> / <span id="total-count">0</span>
+                    </p>
+                    <ul id="task-container" class="task-container"></ul>
+                    <p id="empty-message" class="empty" style="display: none;">📭 尚無任務，點選下方新增吧！</p>
+                    <button id="add-task-btn-from-list" class="add-btn">➕ 新增任務</button>
+                </div>
+            </div>
+
+            <div id="add-task-view" style="display: none;">
+                <div class="add-task">
+                    <h2>🆕 新增任務</h2>
+                    <form id="add-task-form" class="form">
+                        <input id="new-task-title" placeholder="請輸入任務名稱" required class="input" />
+                        <button type="submit" class="submit-btn">✅ 新增任務</button>
+                    </form>
+                    <a href="#" id="back-to-list-btn" class="back-btn">⬅ 返回任務列表</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Made with ❤️ using HTML, CSS, and JavaScript</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
