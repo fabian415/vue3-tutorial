@@ -50,7 +50,7 @@ import { createApp } from "vue";
 import App from "./App-7-vue-router.vue";
 
 import store from "./store";
-import { router } from "./router";
+import router from "./router";
 
 createApp(App)
     .use(store)

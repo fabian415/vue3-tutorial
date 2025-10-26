@@ -10,14 +10,14 @@ let modules = import.meta.glob("../components/**/*.vue");
 //   "../components/home/Services.vue": () => import("../components/home/Services.vue")
 // }
 
-export const router = createRouter({
+const router = createRouter({
   // createWebHashHistory 是 Hash 模式
   // 在 HTML5 的 History API 還沒出現之前，想要控制 URL 又不能換頁，只能透過 URL hash，也就是 #。原本在網頁裡代表的是「錨點」的含義，後面接的是這個網頁的某個位置。 
   // Hash Mode 的好處是我們無需調整後端的設定。
   // 不過這種做法也有缺點，搜尋引擎在收錄頁面的時候，會自動忽略 URL 裡面帶有 # 的部分，因此也不利於網站的 SEO。
   
   // createWebHistory 是 History 模式
-  // 但就需要後端路由 (請見 4-1 小節後端路由部分) 搭配，否則當我們重新整理網頁後，就會得到一個 HTTP 404 找不到網頁的錯誤訊息。
+  // 但就需要後端路由搭配，否則當我們重新整理網頁後，就會得到一個 HTTP 404 找不到網頁的錯誤訊息。
   history: createWebHistory(),
   routes: [
     {
@@ -29,6 +29,10 @@ export const router = createRouter({
       name: "User",
       path: "/user/:userId",
       component: modules["../components/User.vue"],
+      beforeEnter: (to, from) => {
+        console.log(`[beforeEnter] from: ${from.path} to: ${to.path}`);
+        // return false; // 阻擋進入
+      }
     },
     {
       name: "home",
@@ -60,5 +64,19 @@ export const router = createRouter({
     }
   ],
 });
+
+// 路由守衛 (全域)
+router.beforeEach((to, from, next) => {
+  console.log(`[beforeEach] from: ${from.path} to: ${to.path}`);
+  if (to.path.indexOf('/user') > -1) {
+    console.log(to.params);
+    // next('/');
+    next();
+  } else {
+    next();
+  }
+});
+
+export default router;
 
 

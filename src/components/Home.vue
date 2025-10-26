@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { router } from "@/router";
+import router from "@/router";
 
 const goTo = (path) => {
   router.push(path);
