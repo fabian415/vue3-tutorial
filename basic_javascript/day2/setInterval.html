@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>倒數計時器（開始/暫停）</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a2e;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  #timer {
+    font-size: 120px;
+    font-weight: bold;
+    color: #00ffcc;
+    text-shadow: 2px 2px 10px #ff0000;
+    margin: 30px 0;
+  }
+
+  input[type="number"] {
+    padding: 10px;
+    font-size: 18px;
+    width: 100px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 5px;
+    color: #fff;
+    background-color: #4caf50;
+  }
+</style>
+</head>
+<body>
+
+<h1>倒數計時器</h1>
+
+<div>
+  <input type="number" id="inputSeconds" placeholder="秒數" min="1">
+</div>
+
+<div id="timer">0</div>
+
+<div>
+  <button id="startPauseBtn">開始</button>
+</div>
+
+<script>
+  // 題目說明：倒數計時器（開始/暫停）
+  // 練習重點：setInterval()、clearInterval()
+  // 結果：使用者可以設定時間，並且可以開始或暫停倒數計時器，每秒更新一次，並且可以顯示倒數時間
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES5
+        var a = 11;
+        // ES6
+        let b = 11;
+        const CONSTANT = 10; // 常數
+        const PI = 3.14;
+        // a = 30;
+        console.log(b);
+        
+        // var e;
+        function test() {
+            // d 作用域 只在 test 函式內
+            var d = 10;
+            // e 找不到，就會在外層找
+            e = 11;
+        }
+        test();
+        // console.log(d);
+        console.log(e);
+
+
+        // if, switch, for
+        if (a === 10) {
+            console.log('a is 10');
+            console.log(5555555);
+        } else if (a === 11 && b === 11) {
+            console.log('a is 11 & b is 11');
+        } else {
+            console.log('a is not 10');
+        }
+
+        // 錯誤的寫法！！
+        // console.log(a = 10);
+        // console.log('a=' + a);
+        console.log(a === 10);
+        console.log(a == 10);
+
+        // for
+        for (let i = 2; i < 10; i++) {
+            console.log(i);
+        }
+
+        // switch case
+        switch (a) {
+            case 10:
+                console.log('a is 10');
+                console.log(5555555);
+                console.log(5555555);
+                console.log(5555555);
+                break;
+            case 11:
+                console.log('a is 11');
+                break;
+            default:
+                console.log('a is not 10');
+                break;
+        }
+
+        // function
+        function sum(a, b, c) {
+            return a + b - c;
+        }
+        console.log(sum(1, 2, 3));
+
+        function say() {
+            console.log('hello!');
+        }
+        say();
+
+        // array
+        let arr = [1, 2, 3];
+        console.log(arr);
+        arr[0] = 10;
+        console.log(arr);
+        arr.push(4);
+        console.log(arr);
+        arr.unshift(-1);
+        console.log(arr);
+        console.log(arr.length);
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = arr[i] + 1;
+        }
+        console.log(arr);
+
+        let arr2  = ['a', 1, 'b', true, 2, 'c'];
+        console.log(arr2);
+        arr2[0] = 'A';
+        console.log(arr2);
+
+        // object
+        let obj = {
+            name: 'John',
+            age: 20
+        };
+        console.log(obj);
+        obj.age = 30;
+        // obj['age'] = 30;
+        console.log(obj);
+        obj.gender = 'male';
+        console.log(obj);
+
+        for (let key in obj) {
+            console.log(key + ' : ' + obj[key]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>🐾 小寵物收集簿</title>
+<style>
+  body {
+    font-family: "Noto Sans TC", sans-serif;
+    background: #ffe6f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  h1 { color: #ff6f91; }
+  input, select, button {
+    padding: 8px; margin: 5px;
+    border-radius: 6px; border: 1px solid #ccc;
+    font-size: 1em;
+  }
+  button { background-color: #ff9ff3; cursor: pointer; border: none; }
+  button:hover { background-color: #feca57; }
+  .pet-card {
+    background: #fff; border-radius: 12px; padding: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 10px; width: 250px; text-align: center;
+    position: relative;
+  }
+  .delete-btn {
+    position: absolute; top: 5px; right: 5px; border: none;
+    background: #ff6b6b; color: white; border-radius: 50%;
+    width: 24px; height: 24px; cursor: pointer;
+    line-height: 6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🐾 小寵物收集簿</h1>
+
+<div>
+  <input type="text" id="name" placeholder="寵物名字">
+  <select id="type">
+    <option value="🐶">狗</option>
+    <option value="🐱">貓</option>
+    <option value="🐰">兔子</option>
+  </select>
+  <input type="text" id="food" placeholder="最愛食物">
+  <button id="addBtn">新增寵物</button>
+</div>
+
+<div id="petList"></div>
+
+<script>
+  const petListDiv = document.getElementById("petList");
+  const addBtn = document.getElementById("addBtn");
+
+  // 載入 localStorage
+  let pets = JSON.parse(localStorage.getItem("pets")) || [];
+
+  // 顯示寵物
+  function renderPets() {
+    petListDiv.innerHTML = "";
+    pets.forEach((pet, index) => {
+      const card = document.createElement("div");
+      card.className = "pet-card";
+      card.innerHTML = `
+        <button class="delete-btn" onclick="deletePet(${index})">x</button>
+        <h2>${pet.type} ${pet.name}</h2>
+        <p>最愛食物: ${pet.food}</p>
+      `;
+      petListDiv.appendChild(card);
+    });
+  }
+
+  // 新增寵物
+  addBtn.addEventListener("click", () => {
+    const name = document.getElementById("name").value.trim();
+    const type = document.getElementById("type").value;
+    const food = document.getElementById("food").value.trim();
+    if(!name || !food) { alert("請填寫完整資訊！"); return; }
+
+    pets.push({name, type, food});
+    localStorage.setItem("pets", JSON.stringify(pets));
+    renderPets();
+
+    document.getElementById("name").value = "";
+    document.getElementById("food").value = "";
+  });
+
+  // 刪除寵物
+  function deletePet(index) {
+    pets.splice(index, 1);
+    localStorage.setItem("pets", JSON.stringify(pets));
+    renderPets();
+  }
+
+  // 初始顯示
+  renderPets();
+</script>
+
+</body>
+</html>

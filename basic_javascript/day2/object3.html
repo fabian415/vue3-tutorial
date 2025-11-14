@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>🐾 小寵物收集簿</title>
+<style>
+  body {
+    font-family: "Noto Sans TC", sans-serif;
+    background: #ffe6f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  h1 { color: #ff6f91; }
+  input, select, button {
+    padding: 8px; margin: 5px;
+    border-radius: 6px; border: 1px solid #ccc;
+    font-size: 1em;
+  }
+  button { background-color: #ff9ff3; cursor: pointer; border: none; }
+  button:hover { background-color: #feca57; }
+  .pet-card {
+    background: #fff; border-radius: 12px; padding: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 10px; width: 250px; text-align: center;
+    position: relative;
+  }
+  .delete-btn {
+    position: absolute; top: 5px; right: 5px; border: none;
+    background: #ff6b6b; color: white; border-radius: 50%;
+    width: 24px; height: 24px; cursor: pointer;
+    line-height: 6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🐾 小寵物收集簿</h1>
+
+<div>
+  <input type="text" id="name" placeholder="寵物名字">
+  <select id="type">
+    <option value="🐶">狗</option>
+    <option value="🐱">貓</option>
+    <option value="🐰">兔子</option>
+  </select>
+  <input type="text" id="food" placeholder="最愛食物">
+  <button id="addBtn">新增寵物</button>
+</div>
+
+<div id="petList">
+    <div class="pet-card">
+        <button class="delete-btn" onclick="deletePet(0)">x</button>
+        <h2>🐶 Nature</h2>
+        <p>最愛食物: 冰淇淋</p>
+    </div>
+    <div class="pet-card">
+        <button class="delete-btn" onclick="deletePet(1)">x</button>
+        <h2>🐶 Nature</h2>
+        <p>最愛食物: 冰淇淋</p>
+    </div>
+</div>
+
+<script>
+    // 🧩 題目描述
+    // 你要設計一個「小寵物收集簿」，讓使用者可以：
+    // 新增寵物：輸入寵物名稱、種類（狗、貓、兔子）、喜愛的食物。
+    // 儲存寵物資料：每隻寵物是一個物件 {name, type, food}，所有寵物存入陣列，再用 JSON.stringify 存到 localStorage。
+    // 載入寵物資料：從 localStorage 讀取寵物陣列，顯示所有已新增的寵物。
+    // 刪除寵物：可以刪除指定寵物，並更新 localStorage。
+    // 可愛顯示：每個寵物用卡片方式顯示，顯示名稱、種類 emoji 和喜愛食物。
+  
+</script>
+
+</body>
+</html>

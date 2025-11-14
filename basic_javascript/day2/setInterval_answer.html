@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>倒數計時器（開始/暫停）</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a2e;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  #timer {
+    font-size: 120px;
+    font-weight: bold;
+    color: #00ffcc;
+    text-shadow: 2px 2px 10px #ff0000;
+    margin: 30px 0;
+  }
+
+  input[type="number"] {
+    padding: 10px;
+    font-size: 18px;
+    width: 100px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 5px;
+    color: #fff;
+    background-color: #4caf50;
+  }
+</style>
+</head>
+<body>
+
+<h1>倒數計時器</h1>
+
+<div>
+  <input type="number" id="inputSeconds" placeholder="秒數" min="1">
+</div>
+
+<div id="timer">0</div>
+
+<div>
+  <button id="startPauseBtn">開始</button>
+</div>
+
+<script>
+let timer = null;
+let totalSeconds = 0;       // 使用者設定秒數
+let remainingSeconds = 0;   // 剩餘秒數
+let isRunning = false;      // 計時狀態
+
+function updateTimer() {
+  document.getElementById("timer").textContent = remainingSeconds;
+}
+
+// 開始或暫停倒數
+function toggleCountdown() {
+  if (!isRunning) {
+    // 開始倒數
+    if (remainingSeconds <= 0) {
+      const input = document.getElementById("inputSeconds").value;
+      totalSeconds = parseInt(input);
+      if (isNaN(totalSeconds) || totalSeconds <= 0) {
+        alert("請輸入正整數秒數！");
+        return;
+      }
+      remainingSeconds = totalSeconds;
+      updateTimer();
+    }
+
+    timer = setInterval(() => {
+      remainingSeconds--;
+      updateTimer();
+      if (remainingSeconds <= 0) {
+        clearInterval(timer);
+        timer = null;
+        isRunning = false;
+        document.getElementById("startPauseBtn").textContent = "開始";
+        alert("時間到！");
+      }
+    }, 1000);
+
+    isRunning = true;
+    document.getElementById("startPauseBtn").textContent = "暫停";
+  } else {
+    // 暫停倒數
+    clearInterval(timer);
+    timer = null;
+    isRunning = false;
+    document.getElementById("startPauseBtn").textContent = "繼續";
+  }
+}
+
+// 綁定按鈕
+document.getElementById("startPauseBtn").addEventListener("click", toggleCountdown);
+
+// 初始化顯示
+updateTimer();
+</script>
+
+</body>
+</html>

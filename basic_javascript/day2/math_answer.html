@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 練習題：猜數字遊戲 + 分數統計
+        // 主要功能說明：
+        // (1) 系統隨機產生 1~10 的數字，使用者最多有 5 次機會猜，每次猜數字後：提示「太大」、「太小」或「猜對了！」
+        // 如果猜對，遊戲提前結束，每次遊戲結束後，再次詢問使用者是否再玩一次 (confirm)
+        // (2) 遊戲統計
+        // 記錄總遊戲次數、猜對次數，並算出勝率
+        //
+        // 使用流程控制：
+        // while 迴圈控制猜數字次數
+        // for 迴圈控制統計遊戲次數
+        // if / else 條件判斷
+        // break 提前結束迴圈
+        // continue 可跳過無效輸入
+        let totalGames = 0;
+        let winGames = 0;
+
+        while(true) { // 主遊戲迴圈
+        totalGames++;
+        let secret = Math.floor(Math.random() * 10) + 1;
+        let guess = 0;
+        let attempts = 0;
+
+        while(attempts < 5) { // 猜數字迴圈
+            let input = prompt(`第 ${attempts + 1} 次猜數字（1~10）：`);
+            guess = parseInt(input);
+
+            if(isNaN(guess) || guess < 1 || guess > 10) {
+            alert("請輸入 1~10 的整數！");
+            continue; // 跳過本次迴圈
+            }
+
+            attempts++;
+
+            if(guess === secret) {
+            alert("🎉 猜對了！");
+            winGames++;
+            break; // 猜對提前結束
+            } else if(guess < secret) {
+            alert("太小了！");
+            } else {
+            alert("太大了！");
+            }
+        }
+
+        if(guess !== secret) {
+            alert(`遊戲結束！答案是 ${secret}`);
+        }
+
+        let playAgain = confirm("是否再玩一次？");
+        if(!playAgain) {
+            break; // 結束遊戲
+        }
+        }
+
+        // 顯示統計結果
+        alert(`遊戲次數：${totalGames}\n猜對次數：${winGames}\n勝率：${((winGames/totalGames)*100).toFixed(2)}%`);
+
+    </script>
+</body>
+</html>

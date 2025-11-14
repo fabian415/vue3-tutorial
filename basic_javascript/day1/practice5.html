@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let height = prompt("請輸入身高：(公分)");
+        let weight = prompt("請輸入體重：(公斤)");
+        alert(`你的BMI是：${weight / (height / 100) ** 2}`);
+        // < 18.5 = 體重過輕
+        // 18.5 ~ 24 = 體重正常
+        // 24 ~ 27 = 體重過重
+        // > 27 = 體重肥胖
+    </script>
+</body>
+</html>

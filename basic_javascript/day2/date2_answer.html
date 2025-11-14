@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 題目說明：計算年齡
+        // 練習重點：
+        // 比較年份與月份
+        // 使用 if 邏輯判斷
+        // 結果：列印出年齡
+        let birth = prompt("請輸入你的生日（格式：YYYY-MM-DD）：");
+        let birthday = new Date(birth);
+        let now = new Date();
+
+        let age = now.getFullYear() - birthday.getFullYear();
+
+        // 如果還沒過生日要減一歲
+        if (
+            now.getMonth() < birthday.getMonth() ||
+            (now.getMonth() === birthday.getMonth() && now.getDate() < birthday.getDate())
+        ) {
+            age--;
+        }
+
+        console.log(`你今年 ${age} 歲 🎉`);
+    </script>
+</body>
+</html>
